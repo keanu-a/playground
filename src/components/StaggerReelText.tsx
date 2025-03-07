@@ -20,11 +20,7 @@ export default function StaggerReelText({
     <motion.div
       initial="initial"
       whileHover="hovered"
-      className={cn(
-        className,
-        initialTextColor,
-        'relative overflow-hidden h-fit'
-      )}
+      className={cn(className, initialTextColor, 'relative overflow-hidden')}
     >
       <div>
         {text.split('').map((letter, index) => (
