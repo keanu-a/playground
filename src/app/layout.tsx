@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
+import Nav from '@/components/Nav';
 
 export const metadata: Metadata = {
   title: 'Frontend Playground',
@@ -13,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="">
+        <Nav />
+        <div>
+          {children}
+        </div>
+        </body>
     </html>
   );
 }
