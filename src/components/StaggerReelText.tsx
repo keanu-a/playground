@@ -1,21 +1,24 @@
 'use client';
 
+import React from 'react';
 import { cn } from '@/utils/cn';
 import { motion } from 'motion/react';
 
 const DELAY_TIME = 0.03;
 
 export default function StaggerReelText({
-  text,
+  children,
   className,
   initialTextColor = 'text-black',
   hoveredTextColor = 'text-black',
 }: {
-  text: string;
+  children: React.ReactNode;
   className?: string;
   initialTextColor?: string;
   hoveredTextColor?: string;
 }) {
+  const text = React.Children.toArray(children).join('');
+
   return (
     <motion.div
       initial="initial"

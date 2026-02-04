@@ -1,15 +1,24 @@
+import ColorChangeText from '@/components/ColorChangeText';
 import StaggerReelText from '@/components/StaggerReelText';
-import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center h-screen items-center">
-      <Link href="/">
+    <div className="flex flex-col justify-center h-screen items-center text-center gap-8 bg-white">
+      <div>
+        <p>Stagger Reel Text</p>
         <StaggerReelText
-          text="keanu"
           className="text-9xl uppercase font-bold"
-        />
-      </Link>
+          initialTextColor="text-gray-900"
+          hoveredTextColor="text-purple-300"
+        >
+          Keanu
+        </StaggerReelText>
+      </div>
+
+      <div>
+        <p>Color Change Text</p>
+        <ColorChangeText className="text-9xl uppercase font-bold" />
+      </div>
     </div>
   );
 }
