@@ -1,10 +1,10 @@
-import ColorChangeText from '@/components/ColorChangeText';
+import HoverUnderline from '@/components/HoverUnderline';
 import StaggerReelText from '@/components/StaggerReelText';
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center h-screen items-center text-center gap-8 bg-white">
-      <div>
+    <div className="text-center">
+      <div className='flex flex-col h-screen flex justify-center items-center'>
         <p>Stagger Reel Text</p>
         <StaggerReelText
           text='Keanu'
@@ -12,10 +12,10 @@ export default function Home() {
         />
       </div>
 
-      {/* <div>
-        <p>Color Change Text</p>
-        <ColorChangeText className="text-9xl uppercase font-bold" />
-      </div> */}
+      <div className='flex flex-col h-screen flex justify-center items-center'>
+        <p>Hover underline</p>
+        <HoverUnderline text='Keanu' className='text-3xl' />
+      </div>
     </div>
   );
 }
