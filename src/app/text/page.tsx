@@ -7,12 +7,9 @@ export default function Home() {
       <div>
         <p>Stagger Reel Text</p>
         <StaggerReelText
+          text='Keanu'
           className="text-9xl uppercase font-bold"
-          initialTextColor="text-gray-900"
-          hoveredTextColor="text-purple-300"
-        >
-          Keanu
-        </StaggerReelText>
+        />
       </div>
 
       {/* <div>
