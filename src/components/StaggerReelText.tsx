@@ -1,23 +1,29 @@
 'use client';
 
-import React from 'react';
+import { useMemo } from 'react';
 import { cn } from '@/utils/cn';
 import { motion } from 'motion/react';
 
 const DELAY_TIME = 0.03;
+const DURATION_TIME = 1.3;
 
-export default function StaggerReelText({
-  children,
-  className,
-  initialTextColor = 'text-black',
-  hoveredTextColor = 'text-black',
-}: {
-  children: React.ReactNode;
+interface Props {
+  text: string;
   className?: string;
   initialTextColor?: string;
   hoveredTextColor?: string;
-}) {
-  const text = React.Children.toArray(children).join('');
+}
+
+export default function StaggerReelText({
+  text,
+  className,
+  initialTextColor = 'text-black',
+  hoveredTextColor = 'text-black',
+}: Props) {
+
+  const letters = useMemo(() => text.split(''), [text]);
+
+  const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
     <motion.div
@@ -26,7 +32,7 @@ export default function StaggerReelText({
       className={cn(className, initialTextColor, 'relative overflow-hidden')}
     >
       <div>
-        {text.split('').map((letter, index) => (
+        {letters.map((letter, index) => (
           <motion.span
             key={index}
             className="inline-block"
@@ -35,7 +41,8 @@ export default function StaggerReelText({
               hovered: { y: '-100%' },
             }}
             transition={{
-              ease: 'easeInOut',
+              ease,
+              duration: DURATION_TIME,
               delay: index * DELAY_TIME,
             }}
           >
@@ -44,7 +51,7 @@ export default function StaggerReelText({
         ))}
       </div>
       <div className={cn(hoveredTextColor, 'absolute inset-0')}>
-        {text.split('').map((letter, index) => (
+        {letters.map((letter, index) => (
           <motion.span
             key={index}
             className="inline-block"
@@ -53,8 +60,9 @@ export default function StaggerReelText({
               hovered: { y: 0 },
             }}
             transition={{
-              ease: 'easeInOut',
+              ease,
               delay: index * DELAY_TIME,
+              duration: DURATION_TIME,
             }}
           >
             {letter}
